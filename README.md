@@ -4,26 +4,42 @@ This is a backend API for managing todos and tasks, built with Node.js, Express,
 
 ## Prerequisites
 
+Before running this project, ensure you have the following installed on your machine:
+
 - [Node.js](https://nodejs.org/) (version 14 or higher recommended)
+- [npm](https://www.npmjs.com/get-npm) (comes with Node.js)
 - [MongoDB](https://www.mongodb.com/) instance (local or cloud)
-- npm (comes with Node.js)
 
 ## Installation
 
-1. Clone the repository:
+Follow these steps to set up the project on your local machine:
+
+1. **Clone the repository**
+
+   Open your terminal and run:
 
    ```bash
    git clone <repository-url>
    cd todo-backend
    ```
 
-2. Install dependencies:
+2. **Install dependencies**
+
+   Run the following command to install all required Node.js packages:
 
    ```bash
    npm install
    ```
 
-3. Create a `.env` file in the root directory and add the following environment variables:
+3. **Set up environment variables**
+
+   Create a `.env` file in the root directory of the project:
+
+   ```bash
+   touch .env
+   ```
+
+   Open the `.env` file in a text editor and add the following variables:
 
    ```env
    MONGO_URI=your_mongodb_connection_string
@@ -32,30 +48,34 @@ This is a backend API for managing todos and tasks, built with Node.js, Express,
    REMINDER_INTERVAL_MS=60000
    ```
 
-   - `MONGO_URI` (required): Your MongoDB connection string.
-   - `DB_NAME` (optional): Database name (default is `todoapp`).
-   - `PORT` (optional): Port number for the server (default is 5000).
-   - `REMINDER_INTERVAL_MS` (optional): Interval in milliseconds for task reminders (default is 60000 ms).
+   - Replace `your_mongodb_connection_string` with your actual MongoDB connection URI.
+   - `DB_NAME` is optional; defaults to `todoapp` if not set.
+   - `PORT` is optional; defaults to `5000`.
+   - `REMINDER_INTERVAL_MS` is optional; sets the interval in milliseconds for task reminders (default is 60000 ms, i.e., 1 minute).
+
+4. **Verify MongoDB connection**
+
+   Ensure your MongoDB instance is running and accessible via the connection string you provided.
 
 ## Running the Project
 
-- To start the server:
+- To start the server in production mode:
 
   ```bash
   npm start
   ```
 
-- To start the server in development mode with auto-reloading:
+- To start the server in development mode with automatic reload on file changes:
 
   ```bash
   npm run dev
   ```
 
-The server will be accessible at `http://localhost:5000.
+The server will start and listen on the port specified in your `.env` file or default to `http://localhost:5000`.
 
 ## API Overview
 
-The API provides the following endpoints:
+The API provides endpoints for managing todos and tasks, including creation, retrieval, updating, deletion, and exporting data to Excel or PDF formats. Some routes require user roles (`admin` or `user`) for access.
 
 ### Todos (`/api/todos`)
 
